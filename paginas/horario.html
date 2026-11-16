@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dia e horário — Carwash</title>
+<meta name="description" content="Carwash: agende a lavagem do seu carro ou moto em poucos toques.">
+<meta name="theme-color" content="#F8FAFC">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- Tema claro/escuro: roda antes de tudo para a tela não piscar -->
+<script src="../js/tema.js"></script>
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body data-tela="time">
+<div id="app" class="app">
+<header class="top">
+  <div class="brand"><svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" style="fill:var(--primary)"/><path d="M24 9.5c5.6 7 10 11.6 10 17a10 10 0 0 1-20 0c0-5.4 4.4-10 10-17z" fill="#fff"/><path d="M19.2 27.5a5 5 0 0 0 4 4.8" fill="none" stroke="#2563EB" stroke-width="2.4" stroke-linecap="round"/><path d="M36.5 8.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z" fill="#fff"/></svg><span>Carwash</span></div>
+  <div class="theme" role="group" aria-label="Tema do aplicativo">
+    <button type="button" data-act="theme" data-t="light" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Claro</button>
+    <button type="button" data-act="theme" data-t="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Escuro</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<ol class="stepper" aria-label="Etapas do agendamento"><li class="done"><i></i>Veículo</li><li class="done"><i></i>Serviço</li><li class="done"><i></i>Local</li><li class="now" aria-current="step"><i></i>Horário</li><li class=""><i></i>Pagar</li></ol>
+<button class="linkbtn" data-act="go" data-to="unit" style="display:inline-flex;align-items:center;gap:4px;text-decoration:none;margin:-4px 0 8px -6px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Voltar</button>
+<h1>Escolha o dia e o horário</h1>
+<p class="sub"><span id="unidade-escolhida"></span> · horários de 1 em 1 hora, das 08:00 às 17:00.</p>
+<div class="dates" role="group" aria-label="Datas" id="datas"></div>
+<div class="slots" role="group" aria-label="Horários disponíveis" style="margin-top:6px" id="horarios"></div>
+<div style="margin-top:18px"><button class="btn primary" id="continuar" data-act="go" data-to="checkout" disabled>Continuar</button></div>
+</main>
+
+<footer class="foot"><button class="linkbtn" data-act="logout">Sair da conta</button><br>Carwash · Qualidade e Brilho Impecável para o seu Veículo</footer>
+
+</div>
+<div id="live" class="sr" aria-live="polite"></div>
+<noscript><p style="padding:24px">O Carwash precisa de JavaScript para funcionar.</p></noscript>
+
+<!-- Programação: os mesmos arquivos em todas as páginas; app.js sempre por último -->
+<script src="../js/qrcode.js"></script>
+<script src="../js/utilidades.js"></script>
+<script src="../js/icones-e-logotipo.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/validacoes.js"></script>
+<script src="../js/interface.js"></script>
+<script src="../js/regras-de-negocio.js"></script>
+<script src="../js/pix.js"></script>
+<script src="../js/agenda-e-whatsapp.js"></script>
+<script src="../js/telas-cliente.js"></script>
+<script src="../js/painel-admin.js"></script>
+<script src="../js/janelas.js"></script>
+<script src="../js/navegacao.js"></script>
+<script src="../js/eventos.js"></script>
+<script src="../js/dados-demonstracao.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

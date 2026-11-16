@@ -1,8 +1,11 @@
-/* Carwash (protótipo) — janelas por cima da tela (senha do admin e recuperar senha). */
+/* Carwash — janelas por cima da tela (senha do admin e recuperar senha).
+   O HTML delas está em paginas/login.html, escondido com o atributo hidden. */
 'use strict';
 /* ============ modais ============ */
-function modalHtml(){
-  if(S.modal==='admin')return '<div class="overlay" data-act="closeModal"><form class="modal stack" data-form="admin" role="dialog" aria-modal="true" aria-labelledby="mt" novalidate><h2 id="mt">Acesso restrito</h2><p class="muted small">Área exclusiva da equipe Carwash.</p>'+field({id:'apass',label:'Senha do administrador',type:'password',attrs:'autocomplete="off"',pw:true})+'<div class="row2"><button type="button" class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" type="submit">Entrar</button></div></form></div>';
-  if(S.modal==='forgot')return '<div class="overlay" data-act="closeModal"><form class="modal stack" data-form="forgot" role="dialog" aria-modal="true" aria-labelledby="mt" novalidate><h2 id="mt">Recuperar senha</h2><p class="muted small">Informe seu e-mail para receber as instruções de redefinição.</p>'+field({id:'femail',label:'E-mail',type:'email',ph:'seunome@gmail.com',attrs:'inputmode="email"'})+'<p class="notice">Protótipo: nenhum e-mail é realmente enviado.</p><div class="row2"><button type="button" class="btn ghost" data-act="closeModal">Fechar</button><button class="btn primary" type="submit">Enviar</button></div></form></div>';
-  return '';
+function renderJanela(){$$('[data-janela]').forEach(j=>{j.hidden=j.dataset.janela!==S.modal})}
+function abrirJanela(nome){
+  S.modal=nome;renderJanela();
+  const j=$('[data-janela="'+nome+'"]');if(!j)return;
+  const f=$('form',j);if(f){f.reset();$$('.field',f).forEach(x=>setErr(x.dataset.f,''));const fe=$('.formerr',f);if(fe)fe.textContent=''}
+  const i=$('input',j);if(i)i.focus();
 }

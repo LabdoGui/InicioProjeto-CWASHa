@@ -225,3 +225,6 @@ footer.foot .linkbtn{font-size:13px}
 .tag{display:inline-block;padding:2px 9px;border-radius:8px;background:var(--surface2);font-size:12px;font-weight:600;color:var(--muted)}
 @media (max-width:900px){.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:380px){.theme button{padding:7px 9px}.stepper li{font-size:10px}}
+
+/* elementos escondidos pelas páginas (janelas, formulário de veículo...) */
+[hidden]{display:none!important}

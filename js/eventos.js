@@ -1,14 +1,14 @@
-/* Carwash (protótipo) — o que acontece em cada toque e em cada formulário. */
+/* Carwash — o que acontece em cada toque e em cada formulário (vale para todas as páginas). */
 'use strict';
 /* ============ eventos ============ */
 const actions={
   theme:t=>setTheme(t.dataset.t),
   go:t=>go(t.dataset.to),
   togglePw:t=>{const i=document.getElementById(t.dataset.target);const show=i.type==='password';i.type=show?'text':'password';t.innerHTML=ic(show?'eyeoff':'eye');t.setAttribute('aria-label',show?'Ocultar senha':'Mostrar senha')},
-  logout:()=>{S.user=null;S.draft={vehicleId:null,serviceId:null,unit:null,date:null,time:null};try{localStorage.removeItem('carwash.session')}catch(e){};go('login')},
-  openAdmin:()=>{if(S.adminOk){go('admin')}else{S.modal='admin';render()}},
+  logout:()=>{S.user=null;S.last=null;S.draft={vehicleId:null,serviceId:null,unit:null,date:null,time:null};try{localStorage.removeItem('carwash.session')}catch(e){};go('login')},
+  openAdmin:()=>{if(S.adminOk){go('admin')}else{abrirJanela('admin')}},
   closeModal:(t,e)=>{if(e.target===t||t.tagName==='BUTTON'){S.modal=null;render()}},
-  forgot:()=>{S.modal='forgot';render()},
+  forgot:()=>abrirJanela('forgot'),
   exitAdmin:()=>{S.adminOk=false;try{sessionStorage.removeItem('carwash.admin')}catch(e){};go('login')},
   seedDemo:()=>{seedDemo();toast('Dados de demonstração carregados');render()},
   clearDemo:()=>{clearDemo();toast('Dados de demonstração removidos');render()},
@@ -87,7 +87,7 @@ const forms={
     else if(D.vehicles.some(v=>v.plate===plate)){setErr('plate','Esta placa já está cadastrada.');ok=false}
     if(!ok){failForm(f);return}
     const v={id:uid(),userId:S.user.id,cat:g.cat,sub:g.sub,model,color:color[0].toUpperCase()+color.slice(1),plate};
-    D.vehicles.push(v);save();S.draft.vehicleId=v.id;S.gv.model=S.gv.color=S.gv.plate='';S.showForm=false;render();toast('Veículo salvo na sua garagem');
+    D.vehicles.push(v);save();S.draft.vehicleId=v.id;S.gv.model=S.gv.color=S.gv.plate='';S.showForm=false;f.reset();render();toast('Veículo salvo na sua garagem');
   },
   async card(f){
     const num=digits(f.cnum.value),name=f.cname.value.trim(),exp=f.cexp.value,cvv=f.ccvv.value;let ok=true;

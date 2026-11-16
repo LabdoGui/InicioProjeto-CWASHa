@@ -1,4 +1,4 @@
-/* Carwash (protótipo) — serviços, preços, unidades, horários, senhas, chave Pix e onde os dados ficam (localStorage). */
+/* Carwash — serviços, preços, unidades, horários, senhas, chave Pix e onde os dados ficam (localStorage). */
 'use strict';
 /* ============ dados ============ */
 const SERVICES=[
@@ -22,8 +22,19 @@ function loadDB(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.user
 let D=loadDB();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
 
-const S={screen:'login',user:null,adminOk:false,modal:null,
+/* Estado da navegação. A tela atual vem da página aberta: <body data-tela="...">. */
+const S={screen:document.body.dataset.tela||'login',user:null,adminOk:false,modal:null,
   draft:{vehicleId:null,serviceId:null,unit:null,date:null,time:null},
   gv:{cat:'Carro',sub:'Sedan',model:'',color:'',plate:''},showForm:false,
   pix:null,last:null,vTab:'Carro'};
 let timers=[];
+
+/* Cada tela é uma página .html; o que foi escolhido (veículo, serviço, horário, Pix...)
+   passa de uma página para a outra guardado na aba do navegador (sessionStorage). */
+const ESTADO='carwash.estado';
+function salvarEstado(){try{sessionStorage.setItem(ESTADO,JSON.stringify({draft:S.draft,gv:S.gv,showForm:S.showForm,pix:S.pix,last:S.last?S.last.id:null}))}catch(e){}}
+(function carregarEstado(){
+  try{const e=JSON.parse(sessionStorage.getItem(ESTADO));if(!e)return;
+    if(e.draft)S.draft=e.draft;if(e.gv)S.gv=e.gv;S.showForm=!!e.showForm;S.pix=e.pix||null;
+    S.last=(e.last&&D.bookings.find(b=>b.id===e.last))||null}catch(e){}
+})();
