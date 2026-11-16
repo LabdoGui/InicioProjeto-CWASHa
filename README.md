@@ -8,10 +8,27 @@ e **pagamento por cartão, Pix ou no local**. Feito com HTML, CSS e JavaScript p
 O site nasceu como um único arquivo HTML (`carwash.html`) e foi separado como um site de verdade:
 **cada tela é uma página `.html`** na pasta `paginas/`, o visual fica em `css/` e a programação em `js/`.
 
-## Como abrir
+## Ver o site
 
-- **No computador:** abra o `index.html` no navegador (dois cliques). Ele leva para a tela de login. Não precisa de servidor.
-- **No GitHub Pages:** com o Pages ligado no repositório, o endereço fica `https://labdogui.github.io/InicioProjeto-CWASHa/`.
+**👉 https://labdogui.github.io/InicioProjeto-CWASHa/**
+
+Funciona no computador e no celular, sem instalar nada.
+
+## Como avaliar (roteiro rápido)
+
+1. **Criar conta:** na tela de login, toque em **Criar Conta**. Use um e-mail `@gmail.com` ou `@outlook.com`
+   (pode ser inventado, nenhum e-mail é enviado), celular com DDD e uma senha forte, por exemplo `Teste@123`.
+2. **Agendar:** cadastre um carro ou moto (placa Mercosul, ex.: `ABC1D23`), escolha o serviço, a unidade, o dia e o horário.
+3. **Pagar:** teste **Pix** (QR Code + Copia e Cola, com botão para simular o pagamento), **Cartão**
+   (número de teste `4111 1111 1111 1111`, validade futura, CVV `123`) ou **Pagar no local**.
+4. **Confirmação:** veja o código do agendamento, o envio por WhatsApp e o botão de adicionar à agenda.
+5. **Painel do administrador:** saia da conta, toque em **Admin** na tela de login e use a senha `Admin@2026`.
+   O botão **Carregar dados de demonstração** preenche o painel com clientes e agendamentos de exemplo.
+6. **Modo claro/escuro:** botões no topo de todas as telas.
+
+## Como abrir no computador
+
+Abra o `index.html` no navegador (dois cliques). Ele leva para a tela de login. Não precisa de servidor.
 
 ## Estrutura
 
